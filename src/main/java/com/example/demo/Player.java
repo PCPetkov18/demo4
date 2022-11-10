@@ -3,12 +3,15 @@ package com.example.demo;
 import java.util.Date;
 
 public class Player {
-
     private int id;
     private String name;
     private String nationality;
     private Date birthDate;
     private int titles;
+
+    public Player(){
+
+    }
 
     public Player(int id, String name, String nationality, Date birthDate, int titles) {
         this.id = id;
@@ -59,13 +62,8 @@ public class Player {
     }
 
     @Override
-    public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", nationality='" + nationality + '\'' +
-                ", birthDate=" + birthDate +
-                ", titles=" + titles +
-                '}';
+    public String toString(){
+        return "\nPlayer [id= " + id + ", name= " + name + ", nationality= " + nationality + ", birthDate= " + birthDate + ", titles= " + titles + "]";
     }
+
 }

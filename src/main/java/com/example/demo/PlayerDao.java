@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -11,8 +10,12 @@ import java.util.List;
 @Repository
 public class PlayerDao {
 
-    @Autowired
+    final
     JdbcTemplate jdbcTemplate;
+
+    public PlayerDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Player> getAllPlayers() {
         String sql = "SELECT * FROM PLAYER";
@@ -57,7 +60,12 @@ public class PlayerDao {
     }
 
 
+    public Throwable getPlayerByNationality(String france) {
+        return null;
+    }
+
+    public void createTournamentTable() {
 
 
-
+    }
 }

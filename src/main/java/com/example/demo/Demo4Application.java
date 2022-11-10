@@ -6,35 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.sql.Date;
+import java.util.Date;
 
 @SpringBootApplication
 public class Demo4Application implements CommandLineRunner {
-
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     PlayerDao dao;
-
     public static void main(String[] args) {
         SpringApplication.run(Demo4Application.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+        logger.info("Inserting Player 4: {}",dao.insertPlayer( new Player(4, "Thiem", "Austria", new Date(System.currentTimeMillis()),17)));
 
-        logger.info("Inserting Player 2: {}", dao.insertPlayer(
-                new Player(2, "Pacata", "Bulgarian",
-                        new Date(System.currentTimeMillis()),
-                        18)));
+        dao.createTournamentTable();
 
-        logger.info("Updating Player with Id 2: {}", dao.updatePlayer(
-                new Player(2, "Gosho", "England",
-                        Date.valueOf("2000-10-01"), 18)));
+        logger.info("French Players: {}", dao.getPlayerByNationality("France") );
 
-        logger.info("Deleting Player with Id 2: {}", dao.deletePlayerById(2));
-
-        logger.info("All Players Data: {}", dao.getAllPlayers());
+        logger.info("All Players Data: {}",dao.getAllPlayers());
     }
 }
